@@ -1,0 +1,26 @@
+[
+	{
+		"key": "home",
+		"title": "Home",
+		"icon": "home",
+		"color": "#fff"
+	},
+	{
+		"key": "live",
+		"title": "Live",
+		"icon": "youtube",
+		"color": "#fff"
+	},
+	{
+		"key": "diskusi",
+		"title": "Diskusi",
+		"icon": "wechat",
+		"color": "#fff"
+	},
+	{
+		"key": "profile",
+		"title": "Profil",
+		"icon": "account",
+		"color": "#fff"
+	}
+]
