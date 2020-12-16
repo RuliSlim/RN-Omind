@@ -1,7 +1,7 @@
 import React from "react";
 import {Picker} from "@react-native-picker/picker";
-import {TextInput, View} from "react-native";
-import {Button, IconButton, Text} from "react-native-paper";
+import {StatusBar, TextInput, View} from "react-native";
+import {Button, IconButton, Text, useTheme} from "react-native-paper";
 import {globalInputContext} from "../../context/input";
 import {stylesDiscussion} from "../../styles/disscussion";
 import {createGroupUrl} from "../../libs/url";
@@ -9,9 +9,11 @@ import {createGroupUrl} from "../../libs/url";
 const CreateGroup = () => {
 	const {values, action} = React.useContext(globalInputContext);
 	const {handleChange, handleSubmit} = action;
+	const {colors} = useTheme();
 
 	return (
 		<View style={stylesDiscussion.container}>
+			<StatusBar backgroundColor={colors.primary} />
 			<View style={stylesDiscussion.forms}>
 				<View style={stylesDiscussion.containerUpload}>
 					<View style={stylesDiscussion.uploadImage}>

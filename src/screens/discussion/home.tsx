@@ -7,7 +7,7 @@ import {stylesDiscussion} from "../../styles/disscussion";
 const HomeDiscussion = () => {
 	const navigation = useNavigation();
 	const handlePress = () => {
-		navigation.navigate("create group");
+		navigation.navigate("Buat Grup");
 	};
 
 	return (

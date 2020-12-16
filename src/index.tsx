@@ -12,10 +12,11 @@ import React from "react";
 import {Provider} from "react-native-paper";
 import MyNavbar from "./components/bottomNavbar";
 import {GlobalInfo} from "./context/info";
+import {myTheme} from "./libs/theme";
 
 const App = () => {
 	return (
-		<Provider>
+		<Provider theme={myTheme}>
 			<GlobalInfo>
 				<MyNavbar />
 			</GlobalInfo>
