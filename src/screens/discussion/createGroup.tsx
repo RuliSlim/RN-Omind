@@ -1,11 +1,13 @@
-import {Picker} from "@react-native-picker/picker";
 import React from "react";
+import {Picker} from "@react-native-picker/picker";
 import {TextInput, View} from "react-native";
 import {Button, IconButton, Text} from "react-native-paper";
+import {globalInputContext} from "../../context/input";
 import {stylesDiscussion} from "../../styles/disscussion";
 
 const CreateGroup = () => {
-	const [level, setLevel] = React.useState<string>("Jenjang");
+	const {values, action} = React.useContext(globalInputContext);
+	const {handleChange, handleSubmit} = action;
 
 	return (
 		<View style={stylesDiscussion.container}>
@@ -16,20 +18,29 @@ const CreateGroup = () => {
 					</View>
 					<Text>Tambahkan foto grup</Text>
 				</View>
-				<TextInput style={stylesDiscussion.input} defaultValue="Nama Grup" />
+				<TextInput
+					style={stylesDiscussion.input}
+					defaultValue="Nama Grup"
+					onChangeText={handleChange("nameGroup")}
+					value={values.nameGroup}
+				/>
 				<View style={stylesDiscussion.bgcPicker}>
 					<Picker
-						selectedValue={level}
+						selectedValue={values.level}
 						style={stylesDiscussion.picker}
-						onValueChange={(itemValue) => setLevel(itemValue.toLocaleString())}
+						//@ts-ignore
+						onValueChange={handleChange("level")}
 						mode="dropdown">
-						<Picker.Item label="Jenjang" value="Jenjang" />
-						<Picker.Item label="SMA" value="SMA" />
-						<Picker.Item label="SMP" value="SMA" />
-						<Picker.Item label="SD" value="SMA" />
+						<Picker.Item label="Jenjang" value="1" />
+						<Picker.Item label="1" value="1" />
+						<Picker.Item label="2" value="2" />
+						<Picker.Item label="3" value="3" />
 					</Picker>
 				</View>
-				<Button mode="contained" style={stylesDiscussion.button}>
+				<Button
+					mode="contained"
+					style={stylesDiscussion.button}
+					onPress={handleSubmit("create group")}>
 					Buat Grup
 				</Button>
 			</View>
