@@ -1,10 +1,12 @@
 import React from "react";
+import {CallApi} from "../../models/api/apiCall";
 import {
 	UserInput,
 	ActionInput,
 	GlobalContext,
 	initialData,
 } from "../../models/input/userInput";
+import {callApi} from "../../utils/api";
 import inputReducer from "./reducers";
 
 interface Props {
@@ -25,16 +27,24 @@ export const GlobalInputProvider = (props: Props) => {
 	const [values, dispatchValues] = React.useReducer<(state: UserInput, action: ActionInput) => UserInput>(inputReducer, initialData);
 
 	const handleChange = (value: keyof UserInput) => (text: string) => {
-		console.log(text, value, "ini hasil>>>>>>>");
 		dispatchValues({type: value, payload: text});
 	};
 
-	const handleSubmit = (type: string) => () => {
-		if (type === "create group") {
-			console.log(values, "ini masuk di handleSubmit");
+	const handleSubmit = (type: CallApi) => async () => {
+		let data: {} = {};
+
+		switch (type.route) {
+			case "create group": {
+				data = {
+					kelas_id: values.level,
+					nama: values.nameGroup,
+					thumbnail: values.thumbnail,
+				};
+			}
 		}
 
-		console.log(type, "masukkkkkka.sdas/fasf.as,");
+		const response = await callApi(type, data);
+		const result = await response.json();
 	};
 
 	return (

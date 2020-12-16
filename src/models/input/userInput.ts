@@ -1,3 +1,5 @@
+import {CallApi} from "../api/apiCall";
+
 export interface UserInput {
 	nameGroup: string;
 	level: "1" | "2" | "3";
@@ -19,7 +21,7 @@ export interface GlobalContext {
 	values: UserInput;
 	action: {
 		handleChange: (value: keyof UserInput) => (text: string) => void;
-		handleSubmit: (type: string) => () => void;
+		handleSubmit: (type: CallApi) => () => void;
 	};
 }
 

@@ -4,6 +4,7 @@ import {TextInput, View} from "react-native";
 import {Button, IconButton, Text} from "react-native-paper";
 import {globalInputContext} from "../../context/input";
 import {stylesDiscussion} from "../../styles/disscussion";
+import {createGroupUrl} from "../../libs/url";
 
 const CreateGroup = () => {
 	const {values, action} = React.useContext(globalInputContext);
@@ -40,7 +41,11 @@ const CreateGroup = () => {
 				<Button
 					mode="contained"
 					style={stylesDiscussion.button}
-					onPress={handleSubmit("create group")}>
+					onPress={handleSubmit({
+						type: "POST",
+						url: createGroupUrl,
+						route: "create group",
+					})}>
 					Buat Grup
 				</Button>
 			</View>
