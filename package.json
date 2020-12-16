@@ -8,7 +8,10 @@
     "start": "react-native start",
     "link": "react-native link",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "debug": "react-native bundle — platform android — dev false — entry-file index.tsx — bundle-output android/app/src/main/assets /index.android.bundle — assets-dest android/app/src/main/res",
+    "gradlew": "./gradlew assembleDebug",
+    "apk:debug": "yarn debug && cd android && yarn gradlew"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",

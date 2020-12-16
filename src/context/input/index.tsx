@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable indent */
 import React from "react";
 import {CallApi} from "../../models/api/apiCall";
 import {
