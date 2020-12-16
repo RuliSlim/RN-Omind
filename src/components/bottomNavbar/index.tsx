@@ -1,6 +1,7 @@
 import React from "react";
 import {BottomNavigation} from "react-native-paper";
 import {Disccusion, Home, Live, Profile} from "../../screens";
+import MySnackbar from "../snackbar/mySnackbar";
 import routesContent from "./routes.json";
 
 interface Routes {
@@ -22,16 +23,19 @@ const MyNavbar = () => {
 	});
 
 	return (
-		<BottomNavigation
-			navigationState={{index, routes}}
-			onIndexChange={setIndex}
-			renderScene={renderScene}
-			inactiveColor="#000"
-			activeColor="#87ceeb"
-			labeled={true}
-			barStyle={{backgroundColor: "#fff"}}
-			shifting={false}
-		/>
+		<React.Fragment>
+			<BottomNavigation
+				navigationState={{index, routes}}
+				onIndexChange={setIndex}
+				renderScene={renderScene}
+				inactiveColor="#000"
+				activeColor="#87ceeb"
+				labeled={true}
+				barStyle={{backgroundColor: "#fff"}}
+				shifting={false}
+			/>
+			<MySnackbar />
+		</React.Fragment>
 	);
 };
 

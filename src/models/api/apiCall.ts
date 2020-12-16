@@ -7,3 +7,8 @@ export interface CallApi {
 	url: string;
 	route: "create group" | "get data";
 }
+
+export interface ResultApi {
+	success: boolean;
+	errors: string;
+}

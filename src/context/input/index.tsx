@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable indent */
 import React from "react";
-import {CallApi} from "../../models/api/apiCall";
+import {CallApi, ResultApi} from "../../models/api/apiCall";
 import {
 	UserInput,
 	ActionInput,
@@ -9,6 +9,7 @@ import {
 	initialData,
 } from "../../models/input/userInput";
 import {callApi} from "../../utils/api";
+import {globalInfoContext} from "../info";
 import inputReducer from "./reducers";
 
 interface Props {
@@ -25,6 +26,8 @@ export const globalInputContext = React.createContext<GlobalContext>({
 
 export const GlobalInputProvider = (props: Props) => {
 	const {children} = props;
+	const {action} = React.useContext(globalInfoContext);
+	const {changeState} = action;
 	// eslint-disable-next-line prettier/prettier
 	const [values, dispatchValues] = React.useReducer<(state: UserInput, action: ActionInput) => UserInput>(inputReducer, initialData);
 
@@ -46,7 +49,10 @@ export const GlobalInputProvider = (props: Props) => {
 		}
 
 		const response = await callApi(type, data);
-		const result = await response.json();
+		const result: ResultApi = await response.json();
+		if (!result.success) {
+			changeState(result.errors);
+		}
 	};
 
 	return (

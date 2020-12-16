@@ -11,11 +11,14 @@
 import React from "react";
 import {Provider} from "react-native-paper";
 import MyNavbar from "./components/bottomNavbar";
+import {GlobalInfo} from "./context/info";
 
 const App = () => {
 	return (
 		<Provider>
-			<MyNavbar />
+			<GlobalInfo>
+				<MyNavbar />
+			</GlobalInfo>
 		</Provider>
 	);
 };
